@@ -41,8 +41,24 @@ function Bg() {
 
   function draw(size: number) {
     if (size === 1) {
-      return
+      for (let [y, a] of template.h.entries()) {
+        for (let [x, v] of a.entries()) {
+          if (v) {
+            line(x, y, x + 1, y)
+          }
+        }
+      }
+      for (let [y, a] of template.v.entries()) {
+        for (let [x, v] of a.entries()) {
+          if (v) {
+            line(x, y, x, y + 1)
+          }
+        }
+      }
     }
+  }
+  function line(x1: number, y1: number, x2: number, y2: number) {
+    path(`M ${x1 * 16 + 8} ${y1 * 16 + 8} L ${x2 * 16 + 8} ${y2 * 16 + 8}`)
   }
   draw(1)
 
