@@ -1,43 +1,64 @@
-import { useState } from 'react'
-import logo from './logo.svg'
+import { ReactElement, useState } from 'react'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+function Bg() {
+  const children: ReactElement[] = []
+  const path = (d: string) => {
+    children.push(<path d={d} key={children.length} />)
+  }
+
+  const template = {
+    h: [
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0],
+      [0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0],
+      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0],
+      [0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+      [1, 0, 0, 1, 0, 1],
+      [0, 1, 1, 1, 1, 0],
+      [1, 0, 1, 0, 0, 0],
+      [1, 1, 0, 1, 1, 0],
+      [0, 0, 0, 1, 0, 1],
+      [1, 1, 1, 1, 1, 1],
+    ],
+    v: [
+      [1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1],
+      [1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1],
+      [1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1],
+      [1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1],
+      [1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1],
+      [1, 1, 1, 1, 1, 0, 1],
+      [1, 0, 1, 1, 0, 1, 1],
+      [1, 1, 0, 1, 0, 1, 1],
+      [1, 0, 1, 1, 0, 1, 1],
+      [1, 0, 1, 0, 1, 1, 1],
+      [1, 0, 1, 1, 0, 0, 1],
+    ],
+  }
+
+  function draw(size: number) {
+    if (size === 1) {
+      return
+    }
+  }
+  draw(1)
 
   return (
+    <svg width={800} height={600}>
+      <g fill="none" stroke="#000" strokeWidth={1} strokeLinecap="round">
+        {children}
+      </g>
+    </svg>
+  )
+}
+
+function App() {
+  return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <Bg />
     </div>
   )
 }
