@@ -63,7 +63,7 @@ function Bg() {
   draw(1)
 
   return (
-    <svg width={800} height={600}>
+    <svg width={800} height={600} style={{ background: '#fff' }}>
       <g fill="none" stroke="#000" strokeWidth={1} strokeLinecap="round">
         {children}
       </g>
